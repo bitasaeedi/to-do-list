@@ -1,0 +1,152 @@
+* { margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(67, 128, 241);
+    margin: 0;
+    padding: 0;
+}
+
+.header-box {
+
+    border-radius: 7px;
+    max-width: 380px;
+    background-color: white;
+    margin: 70px auto;
+}
+
+.top-box {
+    padding: 20px 20px 15px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+
+}
+
+.top-box i {
+    position: absolute;
+    top: 31px;
+    color: #888888;
+    left: 27px
+}
+
+.input-box>input {
+    width: 100%;
+    height: 45px;
+    outline: none;
+    padding-left: 35px;
+    border: 1px solid rgb(219, 194, 194);
+    border-radius: 5px;
+}
+
+.input-box>input:focus {
+    color: black;
+    border: 1px solid rgb(67, 128, 241);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+
+.filter-button {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.ml-2 {
+    margin-left: 17px;
+}
+
+.buttons button {
+    background-color: rgb(67, 128, 241);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    padding: 7px 12px;
+    cursor: pointer;
+}
+
+.filter-button li {
+    cursor: pointer;
+    transition: color 0.3s ease-in;
+}
+
+.filter-button li:hover {
+    color: rgb(67, 128, 241);
+}
+
+.filter-button li.active {
+    color: rgb(67, 128, 241);
+}
+
+.tasks {
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.todo-task {
+    list-style: none;
+    padding: 15px 0px;
+    border-bottom: 1px solid rgb(219, 194, 194);
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.todo-task:last-child {
+    border-bottom: none;
+}
+
+.tasks span:last-child {
+    margin-left: auto;
+}
+
+.bottom-box {
+    padding: 0px 20px 13px;
+}
+
+.task-text {
+    margin-left: 10px;
+}
+
+.edit-box {
+    margin: 0px;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    background-color: white;
+    top: 50%;
+    right: 0;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px #888888;
+    z-index: 1;
+    display: none;
+}
+
+.edit-box>li {
+    padding: 8px 22px;
+}
+
+img {
+    margin-right: 6px;
+}
+
+span,
+li {
+    cursor: pointer;
+}
+input[type=checkbox]{
+ margin-right: 10px;
+}
+P{
+    text-decoration:none;
+}

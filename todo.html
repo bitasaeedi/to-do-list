@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>to do list</title>
+    <link rel="stylesheet" href="Style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+
+  <body>
+    <div class="header-box">
+      <div class="top-box">
+        <form class="input-box">
+          <i class="material-icons">subject</i>
+          <input
+            type="text"
+            data-bita=""
+            placeholder="Add a new task"
+            id="input"
+          />
+        </form>
+        <div class="buttons">
+          <ul class="filter-button">
+            <li>All</li>
+            <li class="ml-2">Pending</li>
+            <li class="ml-2">completed</li>
+          </ul>
+          <button id="clearall">clear All</button>
+        </div>
+      </div>
+
+      <div class="bottom-box">
+        <ul class="tasks"></ul>
+
+        <script>
+          let input = document.querySelector("#input");
+          let ul = document.querySelector(".tasks");
+          let clearall = document.querySelector("#clearall");
+          input.addEventListener("keypress", addtask);
+          let filterButton = document.querySelectorAll(".filter-button li");
+
+          filterButton.forEach((element) => {
+            element.addEventListener("click", function () {
+              let items = document.querySelectorAll(".todo-task");
+              let checks = document.querySelectorAll(".todo-task input");
+
+              function blacktext() {
+                filterButton.forEach((el) => {
+                  el.style.color = "black";
+                });
+              }
+
+              if (element == filterButton[0]) {
+                filterButton.forEach(blacktext);
+                element.style.color = "rgb(67, 128, 241)";
+                items.forEach((element2) => {
+                  element2.style.display = "flex";
+                });
+              }
+
+              if (element == filterButton[1]) {
+                
+                filterButton.forEach(blacktext);
+                element.style.color = "rgb(67, 128, 241)";
+
+                items.forEach((element2) => {
+                  element2.style.display = "flex";
+                });
+                items.forEach((element2) => {
+                  if (element2.querySelector("input").checked) {
+                    element2.style.display = "none";
+                  }
+                });
+              }
+              if (element == filterButton[2]) {
+
+                filterButton.forEach(blacktext);
+                element.style.color = "rgb(67, 128, 241)";
+
+                items.forEach((element2) => {
+                  element2.style.display = "flex";
+                });
+                items.forEach((element2) => {
+                  if (!element2.querySelector("input").checked) {
+                    element2.style.display = "none";
+                  }
+                });
+              }
+            });
+          });
+
+          let temp;
+          function addtask(e) {
+            if (e.key === "Enter") {
+              if (temp) {
+                e.preventDefault();
+                temp.getElementsByTagName("p")[0].innerHTML = input.value;
+                input.value = "";
+                temp = "";
+                return;
+              }
+              e.preventDefault();
+              let inputText = input.value;
+              let li = document.createElement("li");
+
+              let checkBox = document.createElement("input");
+              let dots = document.createElement("span");
+              let editul = document.createElement("ul");
+              let delli = document.createElement("li");
+              let editli = document.createElement("li");
+              let p = document.createElement("p");
+
+              li.className = "todo-task";
+              editul.className = "edit-box";
+              dots.appendChild(document.createTextNode("..."));
+              checkBox.setAttribute("type", "checkbox");
+              checkBox.className = "check";
+              editul.appendChild(delli);
+              editul.appendChild(editli);
+              li.appendChild(editul);
+              li.appendChild(checkBox);
+              p.appendChild(document.createTextNode(inputText));
+              li.appendChild(p);
+              li.appendChild(dots);
+              delli.appendChild(document.createTextNode("Delete"));
+              editli.appendChild(document.createTextNode("Edit"));
+              ul.appendChild(li);
+              input.value = "";
+              dots.addEventListener("click", function () {
+                editul.style.display = "block";
+              });
+
+              delli.addEventListener("click", function () {
+                editul.style.display = "none";
+                ul.removeChild(li);
+              });
+
+              editli.addEventListener("click", function () {
+                editul.style.display = "none";
+                input.value = p.textContent;
+                temp = li;
+              });
+              checkBox.addEventListener("change", function (e) {
+                if (e.target.checked) {
+                  p.style.textDecoration = "line-through";
+                } else {
+                  p.style.textDecoration = "none";
+                }
+              });
+            }
+          }
+
+          //delete All
+          clearall.addEventListener("click", function () {
+            var child = ul.lastElementChild;
+            while (child) {
+              ul.removeChild(child);
+              child = ul.lastElementChild;
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
